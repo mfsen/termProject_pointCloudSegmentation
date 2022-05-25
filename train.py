@@ -29,7 +29,7 @@ callbacks_list = [checkpoint]
 #Complie the model
 unet.compile(optimizer=tf.keras.optimizers.Adam(),loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 
-results = unet.fit(trainbatch,  epochs=1, validation_data=(validbatch),callbacks=callbacks_list)
+results = unet.fit(trainbatch,  epochs=20, validation_data=(validbatch),callbacks=callbacks_list)
 
 import pandas as pd 
 from matplotlib import pyplot as plt
