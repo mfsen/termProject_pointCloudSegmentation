@@ -18,12 +18,15 @@ class dataLoader():
 
 class dataPreProcessor():
     def __init__(self) -> None:
+        self.SemKITTI_label_color = dict()
         self.SemKITTI_label_name = dict()
+        
         with open("semantic-kitti.yaml", 'r') as stream:
             semkittiyaml = yaml.safe_load(stream)
         for i in sorted(list(semkittiyaml['learning_map'].keys()))[::-1]:
-            self.SemKITTI_label_name[i] = semkittiyaml['color_map'][i]
-        self.uniqueClasses = np.unique(list(self.SemKITTI_label_name.keys()))
+            self.SemKITTI_label_color[i] = semkittiyaml['color_map'][i]
+            self.SemKITTI_label_name[i] = semkittiyaml['labels'][i]
+        self.uniqueClasses = np.unique(list(self.SemKITTI_label_color.keys()))
         self.numberOfClasses = len(self.uniqueClasses)
 
     def scale_2_255(self,data,minValue,maxValue,dtype=np.uint8):

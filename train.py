@@ -6,8 +6,8 @@ from Unet import UnetModel
 from dataLoader import *
 
 
-
-dataPath = "E:/okulitu/itüYükseknew/2022bahar/DeepLearning/projects/MyCode/data/sequences/00"
+#write your data path here
+dataPath = " "
 dataimporter= dataLoader(dataPath)
 
 # load Data Paths and create generator for our model
